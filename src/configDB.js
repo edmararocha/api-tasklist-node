@@ -1,9 +1,8 @@
-import sqlite3 from 'sqlite3'
-import { open } from 'sqlite'
+import Sequelize from 'sequelize';
 
-export async function openDb () {
-  return open({
-    filename: './database.db',
-    driver: sqlite3.Database
-  })
-}
+const connection = new Sequelize('tasklist_Database', 'postgres', '12345', {
+  host: 'localhost',
+  dialect: 'postgres'
+});
+
+export default {connection: connection, sequelize: Sequelize};
